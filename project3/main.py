@@ -1,21 +1,22 @@
+from decimal import Decimal
 
 
-def calculate_fee(written_checks: int) -> float:
+def calculate_fee(written_checks: int) -> Decimal:
     """
     Calculates the bank fee for the number of checks written
 
     :param written_checks: how many checks were written
     :return: the fees for the number of checks written according to the schedule
     """
-    fees = 10
+    fees = Decimal("10")
     if written_checks < 20:
-        fees += written_checks * .1
+        fees += written_checks * Decimal(".1")
     elif 20 <= written_checks < 40:
-        fees += written_checks * .08
+        fees += written_checks * Decimal(".08")
     elif 40 <= written_checks < 60:
-        fees += written_checks * .06
+        fees += written_checks * Decimal(".06")
     elif written_checks >= 60:
-        fees += written_checks * .04
+        fees += written_checks * Decimal(".04")
 
     return fees
 
